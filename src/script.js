@@ -191,9 +191,9 @@ function renderResults(data, searchTerm, page) {
         })
     }
    
-    document.querySelector("main").innerHTML = `<button id="previous" onClick="prevPage('${searchTerm}', '${Number(page)}')">Previous</button>`
-    + `<button id="next" onClick="nextPage('${searchTerm}', '${Number(page)}')">Next</button>` 
-     + mainHTML
+    document.querySelector("main").innerHTML += `<div class="btns-parent"><button id="previous" onClick="prevPage('${searchTerm}', '${Number(page)}')">Previous</button>`
+    + `<button id="next" onClick="nextPage('${searchTerm}', '${Number(page)}')">Next</button></div>` 
+   document.getElementById("cards").innerHTML = mainHTML
 
     if (!data.next && !data.previous) {
         document.getElementById("next").disabled = true
