@@ -47,17 +47,17 @@ function renderResults(data, searchTerm, page) {
     mainHTML = ""
     if(searchTerm === "people") {
     data.results.forEach(result => {
-        if(result.starships) {
+        if(result.starships.length >= 1) {
             mainHTML += `
             <div>
-                <p>${result.name}</p>
-                <p>${result.height}</p>
-                <p>${result.mass}</p>
-                <p>${result.hair_color}</p>
-                <p>${result.skin_color}</p>
-                <p>${result.eye_color}</p>
-                <p>${result.birth_year}</p>
-                <p>${result.gender}</p>
+                <p>Name: ${result.name}</p>
+                <p>Height: ${result.height}</p>
+                <p>Mass: ${result.mass}</p>
+                <p>Hair color: ${result.hair_color}</p>
+                <p>Skin color: ${result.skin_color}</p>
+                <p>Eye color: ${result.eye_color}</p>
+                <p>Birth year: ${result.birth_year}</p>
+                <p>Gender: ${result.gender}</p>
                 <button onClick="renderHomeWorld('${result.homeworld}', 'homeworld')">Home world</button>
                 <button onClick="renderHomeWorld('${result.films}', 'films')">Films</button>
                 <button onClick="renderHomeWorld('${result.vehicles}', 'vehicles')">Vehicles</button>
@@ -68,14 +68,14 @@ function renderResults(data, searchTerm, page) {
         else {
         mainHTML += `
             <div>
-                <p>${result.name}</p>
-                <p>${result.height}</p>
-                <p>${result.mass}</p>
-                <p>${result.hair_color}</p>
-                <p>${result.skin_color}</p>
-                <p>${result.eye_color}</p>
-                <p>${result.birth_year}</p>
-                <p>${result.gender}</p>
+                <p>Name: ${result.name}</p>
+                <p>Height: ${result.height}</p>
+                <p>Mass: ${result.mass}</p>
+                <p>Hair color: ${result.hair_color}</p>
+                <p>Skin color: ${result.skin_color}</p>
+                <p>Eye color: ${result.eye_color}</p>
+                <p>Birth year: ${result.birth_year}</p>
+                <p>Gender: ${result.gender}</p>
                 <button onClick="renderHomeWorld('${result.homeworld}', 'homeworld')">Home world</button>
                 <button onClick="renderHomeWorld('${result.films}', 'films')">Films</button>
                 <button onClick="renderHomeWorld('${result.vehicles}', 'vehicles')">Vehicles</button>
