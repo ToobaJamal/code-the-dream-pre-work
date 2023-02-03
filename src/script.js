@@ -1,11 +1,10 @@
-console.log("running")
 const people = document.getElementById("people")
 const btn = document.querySelector("button")
 const btns = document.querySelector("#buttons")
 let searchTerm = ""
 let page = 1
 let mainHTML = ""
-console.log(btns)
+
 // btn.forEach( i => console.log(i.innerText))
 
 // btn.forEach(i => {
@@ -46,10 +45,27 @@ btns.addEventListener("click", function(e) {
 
 function renderResults(data, searchTerm, page) {
     mainHTML = ""
-    console.log(data)
     if(searchTerm === "people") {
     data.results.forEach(result => {
-        console.log(result)
+        if(result.starships) {
+            mainHTML += `
+            <div>
+                <p>${result.name}</p>
+                <p>${result.height}</p>
+                <p>${result.mass}</p>
+                <p>${result.hair_color}</p>
+                <p>${result.skin_color}</p>
+                <p>${result.eye_color}</p>
+                <p>${result.birth_year}</p>
+                <p>${result.gender}</p>
+                <button onClick="renderHomeWorld('${result.homeworld}', 'homeworld')">Home world</button>
+                <button onClick="renderHomeWorld('${result.films}', 'films')">Films</button>
+                <button onClick="renderHomeWorld('${result.vehicles}', 'vehicles')">Vehicles</button>
+                <button id="starships" onClick="renderHomeWorld('${result.starships}', 'starships')">Starships</button>
+            </div>
+        `    
+        }
+        else {
         mainHTML += `
             <div>
                 <p>${result.name}</p>
@@ -63,10 +79,13 @@ function renderResults(data, searchTerm, page) {
                 <button onClick="renderHomeWorld('${result.homeworld}', 'homeworld')">Home world</button>
                 <button onClick="renderHomeWorld('${result.films}', 'films')">Films</button>
                 <button onClick="renderHomeWorld('${result.vehicles}', 'vehicles')">Vehicles</button>
-                <button onClick="renderHomeWorld('${result.starships}', 'starships')">Starships</button>
+                
             </div>
         `
+        }
     })
+
+
     }
     else if (searchTerm === "films") {
         data.results.forEach(result => {
@@ -189,18 +208,14 @@ function renderResults(data, searchTerm, page) {
 }
 
 function nextPage(searchTerm, page) {
-    console.log(searchTerm, page)
     page = Number(page) + 1
-    console.log(page)
     fetch(`https://swapi.dev/api/${searchTerm}/?page=${page}`)
     .then(res => res.json())
     .then(data => renderResults(data, searchTerm, page))
 }
 
 function prevPage(searchTerm, page) {
-    console.log(searchTerm, page)
     page = Number(page) - 1
-    console.log(page)
     fetch(`https://swapi.dev/api/${searchTerm}/?page=${page}`)
     .then(res => res.json())
     .then(data => renderResults(data, searchTerm, page))
@@ -208,20 +223,18 @@ function prevPage(searchTerm, page) {
 
 function renderHomeWorld(url, model) {
     mainHTML = ""
-    console.log(model)
     const urlArray = url.split(",")
     if(urlArray.length === 1) {
         fetch(url)
         .then(res => res.json())
         .then(data => render(Object.keys(data), data, model))
     } else {
-        console.log("NO STRING")
         urlArray.forEach(i => {
             fetch(i)
         .then(res => res.json())
         .then(data => {
             render(Object.keys(data), data, model)
-            console.log(data)})
+           })
         })
     }
    
@@ -229,7 +242,6 @@ function renderHomeWorld(url, model) {
 
 function render(keys, data, model) {
     if(model === "homeworld") {
-        console.log(model)
         keys.filter(key => key !== "residents" && key !== "films" &&
          key !== "created" && key !== "edited" && key !== "url").forEach(key => {
             mainHTML += `<p>${data[key]}</p>`
@@ -237,7 +249,6 @@ function render(keys, data, model) {
         mainHTML += `<button onClick="renderHomeWorld('${data.films}', 'films')">Films</button>`
     }
     else if(model === "films") {
-        console.log(model)
         keys.filter(key => key !== "release_date" && key !== "characters" &&
          key !== "planets" && key !== "starships" && key !== "vehicles" &&
          key !== "species" && key !== "created" && key !== "edited" && key !== "url").forEach(key => {
@@ -251,16 +262,25 @@ function render(keys, data, model) {
         `
     }
     else if(model === "characters") {
-        console.log(model)
-        keys.filter(key => key !== "homeworld" && key !== "films" &&
+        if (data["starships"].length >= 1) {
+            keys.filter(key => key !== "homeworld" && key !== "films" &&
          key !== "starships" && key !== "vehicles" &&
          key !== "species" && key !== "created" && key !== "edited" && key !== "url").forEach(key => {
             mainHTML += `<p>${data[key]}</p>`
         })
-        mainHTML += `<button onClick="renderHomeWorld('${data.starships}', 'starships')">Starships</button>`
+        mainHTML += `<button onClick="renderHomeWorld('${data.starships}', 'starships')">Starships</button>`    
+        }
+        else if(data["starships"].length < 1){
+            keys.filter(key => key !== "homeworld" && key !== "films" &&
+         key !== "starships" && key !== "vehicles" &&
+         key !== "species" && key !== "created" && key !== "edited" && key !== "url").forEach(key => {
+            mainHTML += `<p>${data[key]}</p>`
+        })
+        }
+        
+        // mainHTML += `<button onClick="renderHomeWorld('${data.starships}', 'starships')">Starships</button>`
     }
     else if(model === "people") {
-        console.log(model)
         keys.filter(key => key !== "homeworld" && key !== "films" &&
          key !== "starships" && key !== "vehicles" &&
          key !== "species" && key !== "created" && key !== "edited" && key !== "url").forEach(key => {
@@ -269,28 +289,24 @@ function render(keys, data, model) {
         mainHTML += `<button onClick="renderHomeWorld('${data.starships}', 'starships')">Starships</button>`
     }
     else if(model === "starships") {
-        console.log(model)
         keys.filter(key => key !== "films" && key !== "pilots" &&
          key !== "created" && key !== "edited" && key !== "url").forEach(key => {
             mainHTML += `<p>${data[key]}</p>`
         })
     }
     else if(model === "vehicles") {
-        console.log(model)
         keys.filter(key => key !== "films" && key !== "pilots" &&
          key !== "created" && key !== "edited" && key !== "url").forEach(key => {
             mainHTML += `<p>${data[key]}</p>`
         })
     }
     else if(model === "planets") {
-        console.log(model)
         keys.filter(key => key !== "films" && key !== "residents" &&
          key !== "created" && key !== "edited" && key !== "url").forEach(key => {
             mainHTML += `<p>${data[key]}</p>`
         })
     }
     
-    console.log("mainHTML", mainHTML)
     document.querySelector("main").innerHTML = mainHTML
 }
 
