@@ -191,8 +191,8 @@ function renderResults(data, searchTerm, page) {
         })
     }
    
-    document.querySelector("main").innerHTML = `<button id="next" onClick="nextPage('${searchTerm}', '${Number(page)}')">Next</button>` + 
-    `<button id="previous" onClick="prevPage('${searchTerm}', '${Number(page)}')">Previous</button>`
+    document.querySelector("main").innerHTML = `<button id="previous" onClick="prevPage('${searchTerm}', '${Number(page)}')">Previous</button>`
+    + `<button id="next" onClick="nextPage('${searchTerm}', '${Number(page)}')">Next</button>` 
      + mainHTML
 
     if (!data.next && !data.previous) {
