@@ -276,7 +276,8 @@ function render(keys, data, model) {
          key !== "species" && key !== "created" && key !== "edited" && key !== "url").forEach(key => {
             mainHTML += `<p>${data[key]}</p>`
         })
-        }
+        mainHTML += `<p>No Starships</p>`
+    }
         
         // mainHTML += `<button onClick="renderHomeWorld('${data.starships}', 'starships')">Starships</button>`
     }
