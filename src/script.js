@@ -244,7 +244,7 @@ function render(keys, data, model) {
     if(model === "homeworld") {
         keys.filter(key => key !== "residents" && key !== "films" &&
          key !== "created" && key !== "edited" && key !== "url").forEach(key => {
-            mainHTML += `<p>${data[key]}</p>`
+            mainHTML += `<p>${key}: ${data[key]}</p>`
         })
         mainHTML += `<button onClick="renderHomeWorld('${data.films}', 'films')">Films</button>`
     }
@@ -252,7 +252,7 @@ function render(keys, data, model) {
         keys.filter(key => key !== "release_date" && key !== "characters" &&
          key !== "planets" && key !== "starships" && key !== "vehicles" &&
          key !== "species" && key !== "created" && key !== "edited" && key !== "url").forEach(key => {
-            mainHTML += `<p>${data[key]}</p>`
+            mainHTML += `${key}: <p>${data[key]}</p>`
         })
         mainHTML += `
         <button onClick="renderHomeWorld('${data.characters}', 'characters')">Characters</button>
@@ -266,7 +266,7 @@ function render(keys, data, model) {
             keys.filter(key => key !== "homeworld" && key !== "films" &&
          key !== "starships" && key !== "vehicles" &&
          key !== "species" && key !== "created" && key !== "edited" && key !== "url").forEach(key => {
-            mainHTML += `<p>${data[key]}</p>`
+            mainHTML += `<p>${key}: ${data[key]}</p>`
         })
         mainHTML += `<button onClick="renderHomeWorld('${data.starships}', 'starships')">Starships</button>`    
         }
@@ -274,9 +274,9 @@ function render(keys, data, model) {
             keys.filter(key => key !== "homeworld" && key !== "films" &&
          key !== "starships" && key !== "vehicles" &&
          key !== "species" && key !== "created" && key !== "edited" && key !== "url").forEach(key => {
-            mainHTML += `<p>${data[key]}</p>`
+            mainHTML += `<p>${key}: ${data[key]}</p>`
         })
-        mainHTML += `<p>No Starships</p>`
+        mainHTML += `<p>Starships: n/a</p>`
     }
         
         // mainHTML += `<button onClick="renderHomeWorld('${data.starships}', 'starships')">Starships</button>`
@@ -285,26 +285,26 @@ function render(keys, data, model) {
         keys.filter(key => key !== "homeworld" && key !== "films" &&
          key !== "starships" && key !== "vehicles" &&
          key !== "species" && key !== "created" && key !== "edited" && key !== "url").forEach(key => {
-            mainHTML += `<p>${data[key]}</p>`
+            mainHTML += `<p>${key}: ${data[key]}</p>`
         })
         mainHTML += `<button onClick="renderHomeWorld('${data.starships}', 'starships')">Starships</button>`
     }
     else if(model === "starships") {
         keys.filter(key => key !== "films" && key !== "pilots" &&
          key !== "created" && key !== "edited" && key !== "url").forEach(key => {
-            mainHTML += `<p>${data[key]}</p>`
+            mainHTML += `<p>${key}: ${data[key]}</p>`
         })
     }
     else if(model === "vehicles") {
         keys.filter(key => key !== "films" && key !== "pilots" &&
          key !== "created" && key !== "edited" && key !== "url").forEach(key => {
-            mainHTML += `<p>${data[key]}</p>`
+            mainHTML += `<p>${key}: ${data[key]}</p>`
         })
     }
     else if(model === "planets") {
         keys.filter(key => key !== "films" && key !== "residents" &&
          key !== "created" && key !== "edited" && key !== "url").forEach(key => {
-            mainHTML += `<p>${data[key]}</p>`
+            mainHTML += `<p>${key}: ${data[key]}</p>`
         })
     }
     
