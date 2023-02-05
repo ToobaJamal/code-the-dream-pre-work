@@ -58,10 +58,10 @@ function renderResults(data, searchTerm, page) {
                 <p>Eye color: ${result.eye_color}</p>
                 <p>Birth year: ${result.birth_year}</p>
                 <p>Gender: ${result.gender}</p>
-                <button onClick="renderHomeWorld('${result.homeworld}', 'homeworld')">Home world</button>
-                <button onClick="renderHomeWorld('${result.films}', 'films')">Films</button>
-                <button onClick="renderHomeWorld('${result.vehicles}', 'vehicles')">Vehicles</button>
-                <button id="starships" onClick="renderHomeWorld('${result.starships}', 'starships')">Starships</button>
+                <button onClick="renderIndividualResult('${result.homeworld}', 'homeworld')">Home world</button>
+                <button onClick="renderIndividualResult('${result.films}', 'films')">Films</button>
+                <button onClick="renderIndividualResult('${result.vehicles}', 'vehicles')">Vehicles</button>
+                <button id="starships" onClick="renderIndividualResult('${result.starships}', 'starships')">Starships</button>
             </div>
         `    
         }
@@ -76,9 +76,9 @@ function renderResults(data, searchTerm, page) {
                 <p>Eye color: ${result.eye_color}</p>
                 <p>Birth year: ${result.birth_year}</p>
                 <p>Gender: ${result.gender}</p>
-                <button onClick="renderHomeWorld('${result.homeworld}', 'homeworld')">Home world</button>
-                <button onClick="renderHomeWorld('${result.films}', 'films')">Films</button>
-                <button onClick="renderHomeWorld('${result.vehicles}', 'vehicles')">Vehicles</button>
+                <button onClick="renderIndividualResult('${result.homeworld}', 'homeworld')">Home world</button>
+                <button onClick="renderIndividualResult('${result.films}', 'films')">Films</button>
+                <button onClick="renderIndividualResult('${result.vehicles}', 'vehicles')">Vehicles</button>
                 
             </div>
         `
@@ -98,10 +98,10 @@ function renderResults(data, searchTerm, page) {
                 <p>Producer: ${result.producer}</p>
                 <p>Release date: ${result.release_date}</p>
 
-                <button onClick="renderHomeWorld('${result.characters}', 'characters')">Characters</button>
-                <button onClick="renderHomeWorld('${result.planets}', 'planets')">Planets</button>
-                <button onClick="renderHomeWorld('${result.starships}', 'starships')">Starships</button>
-                <button onClick="renderHomeWorld('${result.vehicles}', 'vehicles')">Vehicles</button>
+                <button onClick="renderIndividualResult('${result.characters}', 'characters')">Characters</button>
+                <button onClick="renderIndividualResult('${result.planets}', 'planets')">Planets</button>
+                <button onClick="renderIndividualResult('${result.starships}', 'starships')">Starships</button>
+                <button onClick="renderIndividualResult('${result.vehicles}', 'vehicles')">Vehicles</button>
                 </div>
             `
         })
@@ -120,7 +120,7 @@ function renderResults(data, searchTerm, page) {
                 <p>Surface water: ${result.surface_water}</p>
                 <p>Population: ${result.population}</p>
 
-                <button onClick="renderHomeWorld('${result.films}', 'films')">Films</button>
+                <button onClick="renderIndividualResult('${result.films}', 'films')">Films</button>
                 </div>
             `
         })
@@ -143,7 +143,7 @@ function renderResults(data, searchTerm, page) {
             <p>MGLT: ${result.MGLT}</p>
             <p>Starship class: ${result.starship_class}</p>
 
-            <button onClick="renderHomeWorld('${result.films}', 'films')">Films</button>
+            <button onClick="renderIndividualResult('${result.films}', 'films')">Films</button>
             </div>
         `
         })
@@ -162,9 +162,9 @@ function renderResults(data, searchTerm, page) {
             <p>Average lifespan: ${result.average_lifespan}</p>
             <p>Language: ${result.language}</p>
 
-            <button onClick="renderHomeWorld('${result.films}', 'films')">Films</button>
-            <button onClick="renderHomeWorld('${result.people}', 'people')">People</button>
-            <button onClick="renderHomeWorld('${result.homeworld}', 'homeworld')">Home world</button>
+            <button onClick="renderIndividualResult('${result.films}', 'films')">Films</button>
+            <button onClick="renderIndividualResult('${result.people}', 'people')">People</button>
+            <button onClick="renderIndividualResult('${result.homeworld}', 'homeworld')">Home world</button>
             </div>
             `
         })
@@ -185,7 +185,7 @@ function renderResults(data, searchTerm, page) {
             <p>Consumables: ${result.consumables}</p>
             <p>Vehicle class: ${result.vehicle_class}</p>
 
-            <button onClick="renderHomeWorld('${result.films}', 'films')">Films</button>
+            <button onClick="renderIndividualResult('${result.films}', 'films')">Films</button>
             </div>
             `
         })
@@ -221,7 +221,7 @@ function prevPage(searchTerm, page) {
     .then(data => renderResults(data, searchTerm, page))
 }
 
-function renderHomeWorld(url, model) {
+function renderIndividualResult(url, model) {
     mainHTML = ""
     const urlArray = url.split(",")
     if(urlArray.length === 1) {
@@ -246,7 +246,7 @@ function render(keys, data, model) {
          key !== "created" && key !== "edited" && key !== "url").forEach(key => {
             mainHTML += `<p>${key}: ${data[key]}</p>`
         })
-        mainHTML += `<button onClick="renderHomeWorld('${data.films}', 'films')">Films</button>`
+        mainHTML += `<button onClick="renderIndividualResult('${data.films}', 'films')">Films</button>`
     }
     else if(model === "films") {
         keys.filter(key => key !== "release_date" && key !== "characters" &&
@@ -255,10 +255,10 @@ function render(keys, data, model) {
             mainHTML += `${key}: <p>${data[key]}</p>`
         })
         mainHTML += `
-        <button onClick="renderHomeWorld('${data.characters}', 'characters')">Characters</button>
-        <button onClick="renderHomeWorld('${data.starships}', 'starships')">Starships</button>
-        <button onClick="renderHomeWorld('${data.vehicles}', 'vehicles')">Vehicles</button>
-        <button onClick="renderHomeWorld('${data.species}', 'species')">Species</button>
+        <button onClick="renderIndividualResult('${data.characters}', 'characters')">Characters</button>
+        <button onClick="renderIndividualResult('${data.starships}', 'starships')">Starships</button>
+        <button onClick="renderIndividualResult('${data.vehicles}', 'vehicles')">Vehicles</button>
+        <button onClick="renderIndividualResult('${data.species}', 'species')">Species</button>
         `
     }
     else if(model === "characters") {
@@ -268,7 +268,7 @@ function render(keys, data, model) {
          key !== "species" && key !== "created" && key !== "edited" && key !== "url").forEach(key => {
             mainHTML += `<p>${key}: ${data[key]}</p>`
         })
-        mainHTML += `<button onClick="renderHomeWorld('${data.starships}', 'starships')">Starships</button>`    
+        mainHTML += `<button onClick="renderIndividualResult('${data.starships}', 'starships')">Starships</button>`    
         }
         else if(data["starships"].length < 1){
             keys.filter(key => key !== "homeworld" && key !== "films" &&
@@ -287,7 +287,7 @@ function render(keys, data, model) {
          key !== "species" && key !== "created" && key !== "edited" && key !== "url").forEach(key => {
             mainHTML += `<p>${key}: ${data[key]}</p>`
         })
-        mainHTML += `<button onClick="renderHomeWorld('${data.starships}', 'starships')">Starships</button>`
+        mainHTML += `<button onClick="renderIndividualResult('${data.starships}', 'starships')">Starships</button>`
     }
     else if(model === "starships") {
         keys.filter(key => key !== "films" && key !== "pilots" &&
@@ -308,6 +308,6 @@ function render(keys, data, model) {
         })
     }
     
-    document.querySelector("main").innerHTML = mainHTML
+    document.getElementById("cards").innerHTML = mainHTML
 }
 
