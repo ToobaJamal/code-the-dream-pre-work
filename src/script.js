@@ -45,6 +45,7 @@ btns.addEventListener("click", function(e) {
 
 function renderResults(data, searchTerm, page) {
     mainHTML = ""
+    document.getElementById("btns-parent").innerHTML = ""
     if(searchTerm === "people") {
     data.results.forEach(result => {
         if(result.starships.length >= 1) {
@@ -191,7 +192,7 @@ function renderResults(data, searchTerm, page) {
         })
     }
    
-    document.querySelector("main").innerHTML += `<div class="btns-parent"><button id="previous" onClick="prevPage('${searchTerm}', '${Number(page)}')">Previous</button>`
+    document.getElementById("btns-parent").innerHTML += `<div id="btns-parent"><button id="previous" onClick="prevPage('${searchTerm}', '${Number(page)}')">Previous</button>`
     + `<button id="next" onClick="nextPage('${searchTerm}', '${Number(page)}')">Next</button></div>` 
    document.getElementById("cards").innerHTML = mainHTML
 
@@ -222,6 +223,7 @@ function prevPage(searchTerm, page) {
 }
 
 function renderIndividualResult(url, model) {
+    document.getElementById("btns-parent").innerHTML = ""
     mainHTML = ""
     const urlArray = url.split(",")
     if(urlArray.length === 1) {
