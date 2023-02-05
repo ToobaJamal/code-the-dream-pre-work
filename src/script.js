@@ -91,12 +91,12 @@ function renderResults(data, searchTerm, page) {
         data.results.forEach(result => {
             mainHTML += `
                 <div>
-                <p>${result.title}</p>
-                <p>${result.episode_id}</p>
-                <p>${result.opening_crawl}</p>
-                <p>${result.director}</p>
-                <p>${result.producer}</p>
-                <p>${result.release_date}</p>
+                <p>Title: ${result.title}</p>
+                <p>Episode id: ${result.episode_id}</p>
+                <p>Opening crawl: ${result.opening_crawl}</p>
+                <p>Director: ${result.director}</p>
+                <p>Producer: ${result.producer}</p>
+                <p>Release date: ${result.release_date}</p>
 
                 <button onClick="renderHomeWorld('${result.characters}', 'characters')">Characters</button>
                 <button onClick="renderHomeWorld('${result.planets}', 'planets')">Planets</button>
@@ -110,15 +110,15 @@ function renderResults(data, searchTerm, page) {
         data.results.forEach(result => {
             mainHTML += `
                 <div>
-                <p>${result.name}</p>
-                <p>${result.rotation_period}</p>
-                <p>${result.orbital_period}</p>
-                <p>${result.diameter}</p>
-                <p>${result.climate}</p>
-                <p>${result.gravity}</p>
-                <p>${result.terrain}</p>
-                <p>${result.surface_water}</p>
-                <p>${result.population}</p>
+                <p>Name: ${result.name}</p>
+                <p>Rotation period: ${result.rotation_period}</p>
+                <p>Orbital period: ${result.orbital_period}</p>
+                <p>Diameter: ${result.diameter}</p>
+                <p>Climate: ${result.climate}</p>
+                <p>Gravity: ${result.gravity}</p>
+                <p>Terrain: ${result.terrain}</p>
+                <p>Surface water: ${result.surface_water}</p>
+                <p>Population: ${result.population}</p>
 
                 <button onClick="renderHomeWorld('${result.films}', 'films')">Films</button>
                 </div>
@@ -129,19 +129,19 @@ function renderResults(data, searchTerm, page) {
         data.results.forEach(result => {
             mainHTML += `
             <div>
-            <p>${result.name}</p>
-            <p>${result.model}</p>
-            <p>${result.manufacturer}</p>
-            <p>${result.cost_in_credits}</p>
-            <p>${result.length}</p>
-            <p>${result.max_atmosphering_speed}</p>
-            <p>${result.crew}</p>
-            <p>${result.passengers}</p>
-            <p>${result.cargo_capacity}</p>
-            <p>${result.consumables}</p>
-            <p>${result.hyperdrive_rating}</p>
-            <p>${result.MGLT}</p>
-            <p>${result.starship_class}</p>
+            <p>Name: ${result.name}</p>
+            <p>Model: ${result.model}</p>
+            <p>Manufacturer: ${result.manufacturer}</p>
+            <p>Cost in credits: ${result.cost_in_credits}</p>
+            <p>Length: ${result.length}</p>
+            <p>Max atmosphering speed: ${result.max_atmosphering_speed}</p>
+            <p>Crew: ${result.crew}</p>
+            <p>Passengers: ${result.passengers}</p>
+            <p>Cargo capacity: ${result.cargo_capacity}</p>
+            <p>Consumables: ${result.consumables}</p>
+            <p>Hyperdrive rating: ${result.hyperdrive_rating}</p>
+            <p>MGLT: ${result.MGLT}</p>
+            <p>Starship class: ${result.starship_class}</p>
 
             <button onClick="renderHomeWorld('${result.films}', 'films')">Films</button>
             </div>
@@ -152,15 +152,15 @@ function renderResults(data, searchTerm, page) {
         data.results.forEach(result => {
             mainHTML += `
             <div>
-            <p>${result.name}</p>
-            <p>${result.classification}</p>
-            <p>${result.designation}</p>
-            <p>${result.average_height}</p>
-            <p>${result.skin_colors}</p>
-            <p>${result.hair_colors}</p>
-            <p>${result.eye_colors}</p>
-            <p>${result.average_lifespan}</p>
-            <p>${result.language}</p>
+            <p>Name: ${result.name}</p>
+            <p>Classification: ${result.classification}</p>
+            <p>Designation: ${result.designation}</p>
+            <p>Average height: ${result.average_height}</p>
+            <p>Skin colors: ${result.skin_colors}</p>
+            <p>Hair colors: ${result.hair_colors}</p>
+            <p>Eye colors: ${result.eye_colors}</p>
+            <p>Average lifespan: ${result.average_lifespan}</p>
+            <p>Language: ${result.language}</p>
 
             <button onClick="renderHomeWorld('${result.films}', 'films')">Films</button>
             <button onClick="renderHomeWorld('${result.people}', 'people')">People</button>
@@ -173,17 +173,17 @@ function renderResults(data, searchTerm, page) {
         data.results.forEach(result => {
             mainHTML += `
             <div>
-            <p>${result.name}</p>
-            <p>${result.model}</p>
-            <p>${result.manufacturer}</p>
-            <p>${result.cost_in_credits}</p>
-            <p>${result.length}</p>
-            <p>${result.max_atmosphering_speed}</p>
-            <p>${result.crew}</p>
-            <p>${result.passengers}</p>
-            <p>${result.cargo_capacity}</p>
-            <p>${result.consumables}</p>
-            <p>${result.vehicle_class}</p>
+            <p>Name: ${result.name}</p>
+            <p>Model: ${result.model}</p>
+            <p>Manufacturer: ${result.manufacturer}</p>
+            <p>Cost in credits: ${result.cost_in_credits}</p>
+            <p>Length: ${result.length}</p>
+            <p>Max atmosphering speed: ${result.max_atmosphering_speed}</p>
+            <p>Crew: ${result.crew}</p>
+            <p>Passenger: ${result.passengers}</p>
+            <p>Cargo capacity: ${result.cargo_capacity}</p>
+            <p>Consumables: ${result.consumables}</p>
+            <p>Vehicle class: ${result.vehicle_class}</p>
 
             <button onClick="renderHomeWorld('${result.films}', 'films')">Films</button>
             </div>
