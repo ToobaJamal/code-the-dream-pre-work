@@ -1,0 +1,75 @@
+body {
+    background-color: #E6E2DF;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding-bottom: 2em;
+}
+
+h1 {
+    text-align: center;
+}
+p {
+    margin: 0 auto 0.5em;
+}
+.logo {
+    margin-inline: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+img {
+    height: 100px;
+}
+#models-btns-parent, .individual-results-parent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    flex-wrap: wrap;
+}
+#models-btns-parent {
+    margin-block: 2em;
+}
+#btns-parent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    flex-wrap: wrap;
+}
+.model, #next, #previous {
+    border: 2px solid black;
+    background-color: transparent;
+    color: black;
+    font-weight: bold;
+    letter-spacing: 0.6px;
+    outline: none;
+    padding-block: 0.5em;
+    padding-inline: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.model:hover, #next:hover, #previous:hover {
+    border: 2px solid white;
+    background-color: black;
+    color: white;
+}
+.card {
+    text-align: center;
+    background-color: #FFF5EE;
+    padding-block: 1em;
+    border-radius: 5px;
+}
+.bold {
+    font-weight: bold;
+}
+#cards-parent {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;
+    justify-content: center; */
+    gap: 2em;
+}
