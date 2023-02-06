@@ -29,9 +29,13 @@ img {
     justify-content: center;
     gap: 0.5em;
     flex-wrap: wrap;
+    border: 1px solid rebeccapurple;
 }
 #models-btns-parent {
     margin-block: 2em;
+}
+.individual-results-parent {
+    height: 80px;
 }
 #btns-parent {
     display: flex;
@@ -60,16 +64,37 @@ img {
 .card {
     text-align: center;
     background-color: #FFF5EE;
+    width: 100%;
     padding-block: 1em;
     border-radius: 5px;
+    padding: 1em;
 }
 .bold {
     font-weight: bold;
 }
 #cards-parent {
     display: flex;
+    flex: 1;
     flex-direction: column;
-    /* align-items: center;
-    justify-content: center; */
+    align-items: center;
+    /* justify-content: center; */ 
     gap: 2em;
+}
+
+@media (min-width: 350px) {
+    .card {
+        width: 90%;
+    }
+}
+@media (min-width: 380px) {
+    .card {
+        width: 320px;
+    }
+}
+@media (min-width: 650px) {
+    #cards-parent {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }
