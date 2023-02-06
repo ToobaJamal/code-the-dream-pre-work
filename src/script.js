@@ -233,6 +233,7 @@ function prevPage(searchTerm, page) {
 function renderIndividualResult(url, model) {
     document.getElementById("btns-parent").innerHTML = ""
     mainHTML = ""
+    document.getElementById("cards-parent").innerHTML = ""
     const urlArray = url.split(",")
     if(urlArray.length === 1) {
         fetch(url)
@@ -251,24 +252,30 @@ function renderIndividualResult(url, model) {
 }
 
 function render(keys, data, model) {
+    const card = document.createElement("div")
+    card.classList.add("card")
     if(model === "homeworld") {
         keys.filter(key => key !== "residents" && key !== "films" &&
          key !== "created" && key !== "edited" && key !== "url").forEach(key => {
             mainHTML += `<p>${key}: ${data[key]}</p>`
         })
-        mainHTML += `<button class="model" onClick="renderIndividualResult('${data.films}', 'films')">Films</button>`
+        mainHTML += `<div class="individual-results-parent">
+        <button class="model" onClick="renderIndividualResult('${data.films}', 'films')">Films</button>
+        </div>`
     }
     else if(model === "films") {
         keys.filter(key => key !== "release_date" && key !== "characters" &&
          key !== "planets" && key !== "starships" && key !== "vehicles" &&
          key !== "species" && key !== "created" && key !== "edited" && key !== "url").forEach(key => {
-            mainHTML += `${key}: <p>${data[key]}</p>`
+            mainHTML += `<p><span class="bold">${key}:</span> ${data[key]}</p>`
         })
         mainHTML += `
+        <div class="individual-results-parent">
         <button class="model" onClick="renderIndividualResult('${data.characters}', 'characters')">Characters</button>
         <button class="model" onClick="renderIndividualResult('${data.starships}', 'starships')">Starships</button>
         <button class="model" onClick="renderIndividualResult('${data.vehicles}', 'vehicles')">Vehicles</button>
         <button class="model" onClick="renderIndividualResult('${data.species}', 'species')">Species</button>
+        </div>
         `
     }
     else if(model === "characters") {
@@ -276,15 +283,17 @@ function render(keys, data, model) {
             keys.filter(key => key !== "homeworld" && key !== "films" &&
          key !== "starships" && key !== "vehicles" &&
          key !== "species" && key !== "created" && key !== "edited" && key !== "url").forEach(key => {
-            mainHTML += `<p>${key}: ${data[key]}</p>`
+            mainHTML += `<p><span class="bold">${key}:</span> ${data[key]}</p>`
         })
-        mainHTML += `<button class="model" onClick="renderIndividualResult('${data.starships}', 'starships')">Starships</button>`    
+        mainHTML += `<div class="individual-results-parent">
+        <button class="model" onClick="renderIndividualResult('${data.starships}', 'starships')">Starships</button>
+        </div>`    
         }
         else if(data["starships"].length < 1){
             keys.filter(key => key !== "homeworld" && key !== "films" &&
          key !== "starships" && key !== "vehicles" &&
          key !== "species" && key !== "created" && key !== "edited" && key !== "url").forEach(key => {
-            mainHTML += `<p>${key}: ${data[key]}</p>`
+            mainHTML += `<p><span class="bold">${key}:</span> ${data[key]}</p>`
         })
         mainHTML += `<p>Starships: n/a</p>`
     }
@@ -295,29 +304,31 @@ function render(keys, data, model) {
         keys.filter(key => key !== "homeworld" && key !== "films" &&
          key !== "starships" && key !== "vehicles" &&
          key !== "species" && key !== "created" && key !== "edited" && key !== "url").forEach(key => {
-            mainHTML += `<p>${key}: ${data[key]}</p>`
+            mainHTML += `<span class="bold">${key}:</span> ${data[key]}</p>`
         })
-        mainHTML += `<button class="model" onClick="renderIndividualResult('${data.starships}', 'starships')">Starships</button>`
+        mainHTML += `<div class="individual-results-parent">
+        <button class="model" onClick="renderIndividualResult('${data.starships}', 'starships')">Starships</button>
+        </div>`
     }
     else if(model === "starships") {
         keys.filter(key => key !== "films" && key !== "pilots" &&
          key !== "created" && key !== "edited" && key !== "url").forEach(key => {
-            mainHTML += `<p>${key}: ${data[key]}</p>`
+            mainHTML += `<span class="bold">${key}:</span> ${data[key]}</p>`
         })
     }
     else if(model === "vehicles") {
         keys.filter(key => key !== "films" && key !== "pilots" &&
          key !== "created" && key !== "edited" && key !== "url").forEach(key => {
-            mainHTML += `<p>${key}: ${data[key]}</p>`
+            mainHTML += `<span class="bold">${key}:</span> ${data[key]}</p>`
         })
     }
     else if(model === "planets") {
         keys.filter(key => key !== "films" && key !== "residents" &&
          key !== "created" && key !== "edited" && key !== "url").forEach(key => {
-            mainHTML += `<p>${key}: ${data[key]}</p>`
+            mainHTML += `<span class="bold">${key}:</span> ${data[key]}</p>`
         })
     }
-    
-    document.getElementById("cards-parent").innerHTML = mainHTML
+    card.innerHTML = mainHTML
+    document.getElementById("cards-parent").appendChild(card)
 }
 
