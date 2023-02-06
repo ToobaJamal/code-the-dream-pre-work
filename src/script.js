@@ -295,7 +295,7 @@ function render(keys, data, model) {
          key !== "species" && key !== "created" && key !== "edited" && key !== "url").forEach(key => {
             mainHTML += `<p><span class="bold">${key}:</span> ${data[key]}</p>`
         })
-        mainHTML += `<p>Starships: n/a</p>`
+        mainHTML += `<p><span class="bold">Starships:</span> n/a</p>`
     }
         
         // mainHTML += `<button onClick="renderHomeWorld('${data.starships}', 'starships')">Starships</button>`
@@ -304,7 +304,7 @@ function render(keys, data, model) {
         keys.filter(key => key !== "homeworld" && key !== "films" &&
          key !== "starships" && key !== "vehicles" &&
          key !== "species" && key !== "created" && key !== "edited" && key !== "url").forEach(key => {
-            mainHTML += `<span class="bold">${key}:</span> ${data[key]}</p>`
+            mainHTML += `<p><span class="bold">${key}:</span> ${data[key]}</p>`
         })
         mainHTML += `<div class="individual-results-parent">
         <button class="model" onClick="renderIndividualResult('${data.starships}', 'starships')">Starships</button>
@@ -313,19 +313,19 @@ function render(keys, data, model) {
     else if(model === "starships") {
         keys.filter(key => key !== "films" && key !== "pilots" &&
          key !== "created" && key !== "edited" && key !== "url").forEach(key => {
-            mainHTML += `<span class="bold">${key}:</span> ${data[key]}</p>`
+            mainHTML += `<p><span class="bold">${key}:</span> ${data[key]}</p>`
         })
     }
     else if(model === "vehicles") {
         keys.filter(key => key !== "films" && key !== "pilots" &&
          key !== "created" && key !== "edited" && key !== "url").forEach(key => {
-            mainHTML += `<span class="bold">${key}:</span> ${data[key]}</p>`
+            mainHTML += `<p><span class="bold">${key}:</span> ${data[key]}</p>`
         })
     }
     else if(model === "planets") {
         keys.filter(key => key !== "films" && key !== "residents" &&
          key !== "created" && key !== "edited" && key !== "url").forEach(key => {
-            mainHTML += `<span class="bold">${key}:</span> ${data[key]}</p>`
+            mainHTML += `<p><span class="bold">${key}:</span> ${data[key]}</p>`
         })
     }
     card.innerHTML = mainHTML
