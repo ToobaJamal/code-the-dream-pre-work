@@ -208,8 +208,10 @@ function renderResults(data, searchTerm, page) {
         })
     }
    
-    document.getElementById("btns-parent").innerHTML += `<button id="previous" onClick="prevPage('${searchTerm}', '${Number(page)}')">Previous</button>`
-    + `<button id="next" onClick="nextPage('${searchTerm}', '${Number(page)}')">Next</button>` 
+    document.getElementById("btns-parent").innerHTML += `
+        <button id="previous" onClick="prevPage('${searchTerm}', '${Number(page)}')">Previous</button>`
+        + `<button id="next" onClick="nextPage('${searchTerm}', '${Number(page)}')">Next</button>
+    ` 
    document.getElementById("cards-parent").innerHTML = mainHTML
 
     if (!data.next && !data.previous) {
@@ -309,8 +311,6 @@ function render(keys, data, model) {
         })
         mainHTML += `<p><span class="bold">Starships:</span> n/a</p>`
     }
-        
-        // mainHTML += `<button onClick="renderHomeWorld('${data.starships}', 'starships')">Starships</button>`
     }
     else if(model === "people") {
         keys.filter(key => key !== "homeworld" && key !== "films" &&
