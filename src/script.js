@@ -3,8 +3,6 @@ const btn = document.querySelector("button")
 const btns = document.querySelector("#models-btns-parent")
 let searchTerm = ""
 let page = 1
-let mainHTML = ""
-
 
 btns.addEventListener("click", function(e) {
     const searchTerm = e.target.textContent.trim().toLowerCase()
@@ -14,7 +12,7 @@ btns.addEventListener("click", function(e) {
 })
 
 function renderResults(data, searchTerm, page) {
-    mainHTML = ""
+    let mainHTML = ""
     document.getElementById("btns-parent").innerHTML = ""
     if(searchTerm === "people") {
     data.results.forEach(result => {
@@ -262,7 +260,7 @@ function renderIndividualResult(url, model) {
 }
 
 function render(keys, data, model) {
-    mainHTML = ""
+    let mainHTML = ""
     const card = document.createElement("div")
     card.classList.add("card")
     if(model === "homeworld") {
