@@ -157,16 +157,16 @@ function renderResults(data, searchTerm, page) {
             <p><span class="bold">Name:</span> ${result.name}</p>
             <p><span class="bold">Model:</span> ${result.model}</p>
             <p><span class="bold">Manufacturer:</span> ${result.manufacturer}</p>
-            <p>Cost in credits: ${result.cost_in_credits}</p>
-            <p>Length: ${result.length}</p>
-            <p>Max atmosphering speed: ${result.max_atmosphering_speed}</p>
-            <p>Crew: ${result.crew}</p>
-            <p>Passengers: ${result.passengers}</p>
-            <p>Cargo capacity: ${result.cargo_capacity}</p>
-            <p>Consumables: ${result.consumables}</p>
-            <p>Hyperdrive rating: ${result.hyperdrive_rating}</p>
-            <p>MGLT: ${result.MGLT}</p>
-            <p>Starship class: ${result.starship_class}</p>
+            <p><span class="bold">Cost in credits:</span> ${result.cost_in_credits}</p>
+            <p><span class="bold">Length:</span> ${result.length}</p>
+            <p><span class="bold">Max atmosphering speed:</span> ${result.max_atmosphering_speed}</p>
+            <p><span class="bold">Crew:</span> ${result.crew}</p>
+            <p><span class="bold">Passengers:</span> ${result.passengers}</p>
+            <p><span class="bold">Cargo capacity:</span> ${result.cargo_capacity}</p>
+            <p><span class="bold">Consumables:</span> ${result.consumables}</p>
+            <p><span class="bold">Hyperdrive rating:</span> ${result.hyperdrive_rating}</p>
+            <p><span class="bold">MGLT:</span> ${result.MGLT}</p>
+            <p><span class="bold">Starship class:</span> ${result.starship_class}</p>
             <div class="individual-results-parent">
             <button class="model" onClick="renderIndividualResult('${result.films}', 'films')">Films</button>
             </div>
@@ -298,7 +298,7 @@ function render(keys, data, model) {
     if(model === "homeworld") {
         keys.filter(key => key !== "residents" && key !== "films" &&
          key !== "created" && key !== "edited" && key !== "url").forEach(key => {
-            mainHTML += `<p>${key}: ${data[key]}</p>`
+            mainHTML += `<p><span class="bold">${key}:</span> ${data[key]}</p>`
         })
         mainHTML += `
         <div class="individual-results-parent">
