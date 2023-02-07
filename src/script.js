@@ -1,4 +1,5 @@
 const btns = document.querySelector("#models-btns-parent")
+const btnsParent = document.querySelector("#btns-parent")
 let searchTerm = ""
 let page = 1
 
@@ -11,7 +12,7 @@ btns.addEventListener("click", function(e) {
 
 function renderResults(data, searchTerm, page) {
     let mainHTML = ""
-    document.getElementById("btns-parent").innerHTML = ""
+    btnsParent.innerHTML = ""
     if(searchTerm === "people") {
     data.results.forEach(result => {
         if(result.starships.length >= 1 && result.vehicles.length >= 1) {
