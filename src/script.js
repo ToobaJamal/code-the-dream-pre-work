@@ -48,7 +48,7 @@ function renderResults(data, searchTerm, page) {
     document.getElementById("btns-parent").innerHTML = ""
     if(searchTerm === "people") {
     data.results.forEach(result => {
-        if(result.starships.length >= 1) {
+        if(result.starships.length >= 1 && result.vehicles.length >= 1) {
             mainHTML += `
             <div class="card">
                 <p><span class="bold">Name:</span> ${result.name}</p>
@@ -63,12 +63,12 @@ function renderResults(data, searchTerm, page) {
                     <button class="model" onClick="renderIndividualResult('${result.homeworld}', 'homeworld')">Home world</button>
                     <button class="model" onClick="renderIndividualResult('${result.films}', 'films')">Films</button>
                     <button class="model" onClick="renderIndividualResult('${result.vehicles}', 'vehicles')">Vehicles</button>
-                    <button class="model" id="starships" onClick="renderIndividualResult('${result.starships}', 'starships')">Starships</button>
+                    <button class="model" onClick="renderIndividualResult('${result.starships}', 'starships')">Starships</button>
                 </div>
             </div>
         `    
         }
-        else {
+        else if(result.starships.length < 1) {
         mainHTML += `
             <div class="card">
                 <p><span class="bold">Name:</span> ${result.name}</p>
@@ -87,6 +87,25 @@ function renderResults(data, searchTerm, page) {
             </div>
         `
         }
+        else if(result.vehicles.length < 1) {
+            mainHTML += `
+                <div class="card">
+                    <p><span class="bold">Name:</span> ${result.name}</p>
+                    <p><span class="bold">Height:</span> ${result.height}</p>
+                    <p><span class="bold">Mass:</span> ${result.mass}</p>
+                    <p><span class="bold">Hair color:</span> ${result.hair_color}</p>
+                    <p><span class="bold">Skin color:</span> ${result.skin_color}</p>
+                    <p><span class="bold">Eye color:</span> ${result.eye_color}</p>
+                    <p><span class="bold">Birth year:</span> ${result.birth_year}</p>
+                    <p><span class="bold">Gender:</span> ${result.gender}</p>
+                    <div class="individual-results-parent">
+                        <button class="model" onClick="renderIndividualResult('${result.homeworld}', 'homeworld')">Home world</button>
+                        <button class="model" onClick="renderIndividualResult('${result.films}', 'films')">Films</button>
+                        <button class="model" onClick="renderIndividualResult('${result.starships}', 'starships')">Starships</button>
+                    </div>    
+                </div>
+            `
+            }
     })
 
 
@@ -157,7 +176,27 @@ function renderResults(data, searchTerm, page) {
     }
     else if (searchTerm === "species") {
         data.results.forEach(result => {
-            mainHTML += `
+            if(result.homeworld === null) {
+                mainHTML += `
+            <div class="card">
+            <p><span class="bold">Name:</span> ${result.name}</p>
+            <p><span class="bold">Classification:</span> ${result.classification}</p>
+            <p><span class="bold">Designation:</span> ${result.designation}</p>
+            <p><span class="bold">Average height:</span> ${result.average_height}</p>
+            <p><span class="bold">Skin colors:</span> ${result.skin_colors}</p>
+            <p><span class="bold">Hair colors:</span> ${result.hair_colors}</p>
+            <p><span class="bold">Eye colors:</span> ${result.eye_colors}</p>
+            <p><span class="bold">Average lifespan:</span> ${result.average_lifespan}</p>
+            <p><span class="bold">Language:</span> ${result.language}</p>
+            <div class="individual-results-parent">
+            <button class="model" onClick="renderIndividualResult('${result.films}', 'films')">Films</button>
+            <button class="model" onClick="renderIndividualResult('${result.people}', 'people')">People</button>
+            </div>
+            </div>
+            `
+            }
+            else {
+                mainHTML += `
             <div class="card">
             <p><span class="bold">Name:</span> ${result.name}</p>
             <p><span class="bold">Classification:</span> ${result.classification}</p>
@@ -175,6 +214,8 @@ function renderResults(data, searchTerm, page) {
             </div>
             </div>
             `
+            }
+            
         })
     }
     else if (searchTerm === "vehicles") {
@@ -232,7 +273,6 @@ function prevPage(searchTerm, page) {
 
 function renderIndividualResult(url, model) {
     document.getElementById("btns-parent").innerHTML = ""
-    mainHTML = ""
     document.getElementById("cards-parent").innerHTML = ""
     const urlArray = url.split(",")
     if(urlArray.length === 1) {
@@ -252,6 +292,7 @@ function renderIndividualResult(url, model) {
 }
 
 function render(keys, data, model) {
+    mainHTML = ""
     const card = document.createElement("div")
     card.classList.add("card")
     if(model === "homeworld") {
@@ -259,11 +300,14 @@ function render(keys, data, model) {
          key !== "created" && key !== "edited" && key !== "url").forEach(key => {
             mainHTML += `<p>${key}: ${data[key]}</p>`
         })
-        mainHTML += `<div class="individual-results-parent">
-        <button class="model" onClick="renderIndividualResult('${data.films}', 'films')">Films</button>
+        mainHTML += `
+        <div class="individual-results-parent">
+            <button class="model" onClick="renderIndividualResult('${data.films}', 'films')">Films</button>
         </div>`
+        
     }
     else if(model === "films") {
+        
         keys.filter(key => key !== "release_date" && key !== "characters" &&
          key !== "planets" && key !== "starships" && key !== "vehicles" &&
          key !== "species" && key !== "created" && key !== "edited" && key !== "url").forEach(key => {
@@ -271,10 +315,10 @@ function render(keys, data, model) {
         })
         mainHTML += `
         <div class="individual-results-parent">
-        <button class="model" onClick="renderIndividualResult('${data.characters}', 'characters')">Characters</button>
-        <button class="model" onClick="renderIndividualResult('${data.starships}', 'starships')">Starships</button>
-        <button class="model" onClick="renderIndividualResult('${data.vehicles}', 'vehicles')">Vehicles</button>
-        <button class="model" onClick="renderIndividualResult('${data.species}', 'species')">Species</button>
+            <button class="model" onClick="renderIndividualResult('${data.characters}', 'characters')">Characters</button>
+            <button class="model" onClick="renderIndividualResult('${data.starships}', 'starships')">Starships</button>
+            <button class="model" onClick="renderIndividualResult('${data.vehicles}', 'vehicles')">Vehicles</button>
+            <button class="model" onClick="renderIndividualResult('${data.species}', 'species')">Species</button>
         </div>
         `
     }
@@ -285,8 +329,9 @@ function render(keys, data, model) {
          key !== "species" && key !== "created" && key !== "edited" && key !== "url").forEach(key => {
             mainHTML += `<p><span class="bold">${key}:</span> ${data[key]}</p>`
         })
-        mainHTML += `<div class="individual-results-parent">
-        <button class="model" onClick="renderIndividualResult('${data.starships}', 'starships')">Starships</button>
+        mainHTML += `
+        <div class="individual-results-parent">
+            <button class="model" onClick="renderIndividualResult('${data.starships}', 'starships')">Starships</button>
         </div>`    
         }
         else if(data["starships"].length < 1){
@@ -306,8 +351,9 @@ function render(keys, data, model) {
          key !== "species" && key !== "created" && key !== "edited" && key !== "url").forEach(key => {
             mainHTML += `<p><span class="bold">${key}:</span> ${data[key]}</p>`
         })
-        mainHTML += `<div class="individual-results-parent">
-        <button class="model" onClick="renderIndividualResult('${data.starships}', 'starships')">Starships</button>
+        mainHTML += `
+        <div class="individual-results-parent">
+            <button class="model" onClick="renderIndividualResult('${data.starships}', 'starships')">Starships</button>
         </div>`
     }
     else if(model === "starships") {
@@ -329,6 +375,7 @@ function render(keys, data, model) {
         })
     }
     card.innerHTML = mainHTML
+    console.log(mainHTML)
     document.getElementById("cards-parent").appendChild(card)
 }
 
