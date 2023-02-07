@@ -3,6 +3,7 @@ const btnsParent = document.querySelector("#btns-parent")
 let searchTerm = ""
 let page = 1
 
+// Add click event listener to btns
 btns.addEventListener("click", function(e) {
     const searchTerm = e.target.textContent.trim().toLowerCase()
     fetch(`https://swapi.dev/api/${searchTerm}/?page=${page}`)
@@ -10,6 +11,7 @@ btns.addEventListener("click", function(e) {
     .then(data => renderResults(data, searchTerm, page))
 })
 
+// function that renders cards when any of the btns is clicked
 function renderResults(data, searchTerm, page) {
     let mainHTML = ""
     btnsParent.innerHTML = ""
@@ -226,6 +228,7 @@ function renderResults(data, searchTerm, page) {
     }
 }
 
+// function to navigate to next page
 function nextPage(searchTerm, page) {
     page = Number(page) + 1
     fetch(`https://swapi.dev/api/${searchTerm}/?page=${page}`)
@@ -233,6 +236,7 @@ function nextPage(searchTerm, page) {
     .then(data => renderResults(data, searchTerm, page))
 }
 
+// function to navigate to previous page
 function prevPage(searchTerm, page) {
     page = Number(page) - 1
     fetch(`https://swapi.dev/api/${searchTerm}/?page=${page}`)
@@ -240,6 +244,7 @@ function prevPage(searchTerm, page) {
     .then(data => renderResults(data, searchTerm, page))
 }
 
+// function that fetches data when a button on any card is clicked
 function renderIndividualResult(url, model) {
     document.getElementById("btns-parent").innerHTML = ""
     document.getElementById("cards-parent").innerHTML = ""
@@ -257,9 +262,9 @@ function renderIndividualResult(url, model) {
            })
         })
     }
-   
 }
 
+// function that renders individual results based on the buttons clicked on individual cards
 function render(keys, data, model) {
     let mainHTML = ""
     const card = document.createElement("div")
