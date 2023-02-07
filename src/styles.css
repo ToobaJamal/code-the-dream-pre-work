@@ -83,16 +83,9 @@ img {
 #cards-parent {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */ 
     gap: 2em;
 }
 
-
-/* @media (min-width: 350px) {
-    .card {
-        width: 90%;
-    }
-} */
 @media (min-width: 380px) {
     .card {
         width: 320px;
