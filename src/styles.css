@@ -1,11 +1,13 @@
 body {
     background-color: #E6E2DF;
+    box-sizing: border-box;
 }
 main {
     display: flex;
     flex-direction: column;
     gap: 1em;
     padding-bottom: 2em;
+
 }
 
 h1 {
@@ -13,9 +15,12 @@ h1 {
 }
 p {
     margin: 0 auto 0.5em;
+    font-size: 1.1rem;
+    letter-spacing: .7px;
 }
 .logo {
     margin-inline: auto;
+    margin-top: 2em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,13 +34,12 @@ img {
     justify-content: center;
     gap: 0.5em;
     flex-wrap: wrap;
-    border: 1px solid rebeccapurple;
 }
 #models-btns-parent {
     margin-block: 2em;
 }
 .individual-results-parent {
-    height: 80px;
+    height: 90px;
 }
 #btns-parent {
     display: flex;
@@ -45,9 +49,10 @@ img {
     flex-wrap: wrap;
 }
 .model, #next, #previous {
-    border: 2px solid black;
+    border: 3px solid black;
     background-color: transparent;
     color: black;
+    font-size: 1.1rem;
     font-weight: bold;
     letter-spacing: 0.6px;
     outline: none;
@@ -57,41 +62,48 @@ img {
     cursor: pointer;
 }
 .model:hover, #next:hover, #previous:hover {
-    border: 2px solid white;
+    border: 3px solid white;
     background-color: black;
     color: white;
+}
+#next:disabled, #previous:disabled {
+    cursor: not-allowed;
 }
 .card {
     text-align: center;
     background-color: #FFF5EE;
-    width: 100%;
-    padding-block: 1em;
+    width: 90%;
+    padding-block: 1.5em;
+    padding-inline: 1em;
     border-radius: 5px;
-    padding: 1em;
 }
 .bold {
-    font-weight: bold;
+    font-weight: 700;
 }
 #cards-parent {
     display: flex;
     flex: 1;
     flex-direction: column;
     align-items: center;
+    flex-grow: 1;
     /* justify-content: center; */ 
     gap: 2em;
 }
 
-@media (min-width: 350px) {
+/* @media (min-width: 350px) {
     .card {
         width: 90%;
     }
-}
+} */
 @media (min-width: 380px) {
     .card {
         width: 320px;
     }
 }
 @media (min-width: 650px) {
+    p {
+        font-size: 1.2rem;
+    }
     #cards-parent {
         flex-direction: row;
         flex-wrap: wrap;
