@@ -5,36 +5,6 @@ let searchTerm = ""
 let page = 1
 let mainHTML = ""
 
-// btn.forEach( i => console.log(i.innerText))
-
-// btn.forEach(i => {
-//     i.addEventListener("click", function(){
-//         let result = ""
-//         if(i.innerText === "People") {
-//             searchTerm = "people"
-//             fetch("https://swapi.dev/api/people")
-//             .then(res => res.json())
-//             .then(data => result = data)
-//         }
-//         else if(i.innerText === "Films") {
-//             searchTerm = "films"
-//         }
-//         else if(i.innerText === "Planets") {
-//             searchTerm = "planets"
-//         }
-//         else if(i.innerText === "Species") {
-//             searchTerm = "species"
-//         }
-//         else if(i.innerText === "Starships") {
-//             searchTerm = "starships"
-//         }
-//         else if(i.innerText === "Vehicles") {
-//             searchTerm = "vehicles"
-//         }
-//         document.querySelector("main").innerHTML = result
-//     })
-// })
-
 
 btns.addEventListener("click", function(e) {
     const searchTerm = e.target.textContent.trim().toLowerCase()
