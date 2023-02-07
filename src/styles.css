@@ -2,6 +2,7 @@ body {
     background-color: #E6E2DF;
     box-sizing: border-box;
 }
+
 main {
     display: flex;
     flex-direction: column;
@@ -10,14 +11,12 @@ main {
 
 }
 
-h1 {
-    text-align: center;
-}
 p {
     margin: 0 auto 0.5em;
     font-size: 1.1rem;
     letter-spacing: .7px;
 }
+
 .logo {
     margin-inline: auto;
     margin-top: 2em;
@@ -25,9 +24,11 @@ p {
     justify-content: center;
     align-items: center;
 }
+
 img {
     height: 100px;
 }
+
 #models-btns-parent, .individual-results-parent {
     display: flex;
     align-items: center;
@@ -35,12 +36,15 @@ img {
     gap: 0.5em;
     flex-wrap: wrap;
 }
+
 #models-btns-parent {
     margin-block: 2em;
 }
+
 .individual-results-parent {
     height: 90px;
 }
+
 #btns-parent {
     display: flex;
     align-items: center;
@@ -48,6 +52,7 @@ img {
     gap: 0.5em;
     flex-wrap: wrap;
 }
+
 .model, #next, #previous {
     border: 3px solid black;
     background-color: transparent;
@@ -61,14 +66,17 @@ img {
     border-radius: 5px;
     cursor: pointer;
 }
+
 .model:hover, #next:hover, #previous:hover {
     border: 3px solid white;
     background-color: black;
     color: white;
 }
+
 #next:disabled, #previous:disabled {
     cursor: not-allowed;
 }
+
 .card {
     text-align: center;
     background-color: #FFF5EE;
@@ -77,9 +85,11 @@ img {
     padding-inline: 1em;
     border-radius: 5px;
 }
+
 .bold {
     font-weight: 700;
 }
+
 #cards-parent {
     display: flex;
     flex-direction: column;
