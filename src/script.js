@@ -342,7 +342,6 @@ function render(keys, data, model) {
         })
     }
     card.innerHTML = mainHTML
-    console.log(mainHTML)
     document.getElementById("cards-parent").appendChild(card)
 }
 
