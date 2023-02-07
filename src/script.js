@@ -1,4 +1,3 @@
-const people = document.getElementById("people")
 const btns = document.querySelector("#models-btns-parent")
 let searchTerm = ""
 let page = 1
