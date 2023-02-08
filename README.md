@@ -12,7 +12,7 @@ A single-page web application built using vanilla JavaScript and the SWAPI (Star
 ## Installation
 1. Clone the repository in your local machine
 2. Navigate to the project directory
-3. Open the index.ht file in your preferred browser or run npx serve
+3. Open the index.ht file in your preferred browser or run `npx serve`
 
 ## Usage
 1. Click on any of the buttons on the screen to find information about people, films, planets, species, starships and vehicles
