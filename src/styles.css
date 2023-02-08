@@ -41,9 +41,9 @@ img {
     margin-block: 2em;
 }
 
-.individual-results-parent {
+/* .individual-results-parent {
     height: 90px;
-}
+} */
 
 #btns-parent {
     display: flex;
