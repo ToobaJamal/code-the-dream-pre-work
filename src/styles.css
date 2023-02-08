@@ -61,12 +61,12 @@ img {
     border: 3px solid black;
     background-color: transparent;
     color: black;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
     letter-spacing: 0.6px;
     outline: none;
-    padding-block: 0.5em;
-    padding-inline: 1em;
+    padding-block: 0.3em;
+    padding-inline: 0.6em;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -98,6 +98,7 @@ img {
 #cards-parent {
     width: 90%;
     display: flex;
+    align-items: center;
     flex-direction: column;
     gap: 2em;
 }
@@ -105,6 +106,11 @@ img {
 @media (min-width: 380px) {
     .card {
         width: 320px;
+    }
+    .model, #next, #previous {
+        font-size: 1.1rem;
+        padding-block: 0.5em;
+        padding-inline: 1em;
     }
 }
 @media (min-width: 650px) {
