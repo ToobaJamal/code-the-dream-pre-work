@@ -6,6 +6,8 @@ body {
 main {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 1em;
     padding-bottom: 2em;
 
@@ -41,9 +43,11 @@ img {
     margin-block: 2em;
 }
 
-/* .individual-results-parent {
-    height: 90px;
-} */
+.individual-results-parent {
+    margin: auto;
+    width: 90%;
+    height: 100px;
+}
 
 #btns-parent {
     display: flex;
@@ -84,6 +88,7 @@ img {
     padding-block: 1.5em;
     padding-inline: 1em;
     border-radius: 5px;
+    margin-inline: auto;
 }
 
 .bold {
@@ -91,6 +96,7 @@ img {
 }
 
 #cards-parent {
+    width: 90%;
     display: flex;
     flex-direction: column;
     gap: 2em;
@@ -109,5 +115,8 @@ img {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
+    }
+    .card {
+        margin-inline: unset;
     }
 }
