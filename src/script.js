@@ -1,7 +1,15 @@
 const btns = document.querySelector("#models-btns-parent")
 const btnsParent = document.querySelector("#btns-parent")
+const main = document.querySelector("main")
 let searchTerm = ""
 let page = 1
+
+function handleErrors(response) {
+    if (!response.ok) {
+        throw Error(response.statusText);
+    }
+    return response;
+}
 
 // Add click event listener to btns
 btns.addEventListener("click", function(e) {
@@ -9,6 +17,7 @@ btns.addEventListener("click", function(e) {
     fetch(`https://swapi.dev/api/${searchTerm}/?page=${page}`)
     .then(res => res.json())
     .then(data => renderResults(data, searchTerm, page))
+    
 })
 
 // function that renders cards when any of the btns is clicked
@@ -292,7 +301,6 @@ function render(keys, data, model) {
             <button class="model" onClick="renderIndividualResult('${data.characters}', 'characters')">Characters</button>
             <button class="model" onClick="renderIndividualResult('${data.starships}', 'starships')">Starships</button>
             <button class="model" onClick="renderIndividualResult('${data.vehicles}', 'vehicles')">Vehicles</button>
-            <button class="model" onClick="renderIndividualResult('${data.species}', 'species')">Species</button>
         </div>
         `
     }
@@ -323,10 +331,6 @@ function render(keys, data, model) {
          key !== "species" && key !== "created" && key !== "edited" && key !== "url").forEach(key => {
             mainHTML += `<p><span class="bold">${key}:</span> ${data[key]}</p>`
         })
-        mainHTML += `
-        <div class="individual-results-parent">
-            <button class="model" onClick="renderIndividualResult('${data.starships}', 'starships')">Starships</button>
-        </div>`
     }
     else if(model === "starships") {
         keys.filter(key => key !== "films" && key !== "pilots" &&
