@@ -103,6 +103,26 @@ img {
     gap: 2em;
 }
 
+.error {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.error > h1, h2, p {
+    margin-bottom: 16px;
+}
+.error-heading {
+    color: #D22B2B;
+}
+/* .error-sub-heading {
+    font-size: 1.7rem;
+} */
+
+
+
 @media (min-width: 380px) {
     .card {
         width: 320px;
@@ -124,5 +144,14 @@ img {
     }
     .card {
         margin-inline: unset;
+    }
+    .error-heading {
+        font-size: 2.2rem;
+    }
+    .error-sub-heading {
+        font-size: 1.8rem;
+    }
+    .error-message {
+        font-size: 1.2rem;
     }
 }
