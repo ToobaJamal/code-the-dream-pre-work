@@ -4,20 +4,28 @@ const main = document.querySelector("main")
 let searchTerm = ""
 let page = 1
 
-function handleErrors(response) {
-    if (!response.ok) {
-        throw Error(response.statusText);
-    }
-    return response;
-}
-
 // Add click event listener to btns
 btns.addEventListener("click", function(e) {
     const searchTerm = e.target.textContent.trim().toLowerCase()
     fetch(`https://swapi.dev/api/${searchTerm}/?page=${page}`)
-    .then(res => res.json())
-    .then(data => renderResults(data, searchTerm, page))
-    
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+    return response.json();
+  })
+  .then(data => {
+    renderResults(data, searchTerm, page)
+  })
+  .catch(error => {
+    document.body.innerHTML = `
+    <div class="error">
+        <h1 class="error-heading">Oops!</h1>
+        <h2 class="error-sub-heading">an error occurred: ${error.message}</h2>
+        <p class="error-message bold">Please try again 😭 </p>
+    </div>
+    `
+  });
 })
 
 // function that renders cards when any of the btns is clicked
@@ -241,18 +249,62 @@ function renderResults(data, searchTerm, page) {
 function nextPage(searchTerm, page) {
     page = Number(page) + 1
     fetch(`https://swapi.dev/api/${searchTerm}/?page=${page}`)
-    .then(res => res.json())
+    .then(response => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        return response.json();
+      })
     .then(data => renderResults(data, searchTerm, page))
+    .catch(error => {
+        document.body.innerHTML = `
+        <div class="error">
+            <h1 class="error-heading">Oops!</h1>
+            <h2 class="error-sub-heading">an error occurred: ${error.message}</h2>
+            <p class="error-message bold">Please try again 😭 </p>
+        </div>
+        `
+      })
 }
 
 // function to navigate to previous page
 function prevPage(searchTerm, page) {
     page = Number(page) - 1
     fetch(`https://swapi.dev/api/${searchTerm}/?page=${page}`)
-    .then(res => res.json())
+    .then(response => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        return response.json();
+      })
     .then(data => renderResults(data, searchTerm, page))
+    .catch(error => {
+        document.body.innerHTML = `
+        <div class="error">
+            <h1 class="error-heading">Oops!</h1>
+            <h2 class="error-sub-heading">an error occurred: ${error.message}</h2>
+            <p class="error-message bold">Please try again 😭 </p>
+        </div>
+        `
+      })
 }
-
+fetch(`https://swapi.dev/api/${searchTerm}/?page=${page}`)
+    .then(response => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        return response.json();
+      })
+    .then(data => renderResults(data, searchTerm, page))
+    .catch(error => {
+        document.body.innerHTML = `
+        <div class="error">
+            <h1 class="error-heading">Oops!</h1>
+            <h2 class="error-sub-heading">an error occurred: ${error.message}</h2>
+            <p class="error-message bold">Please try again 😭 </p>
+        </div>
+        `
+      })
 // function that fetches data when a button on any card is clicked
 function renderIndividualResult(url, model) {
     document.getElementById("btns-parent").innerHTML = ""
@@ -260,15 +312,41 @@ function renderIndividualResult(url, model) {
     const urlArray = url.split(",")
     if(urlArray.length === 1) {
         fetch(url)
-        .then(res => res.json())
-        .then(data => render(Object.keys(data), data, model))
+        .then(response => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        return response.json();
+      })
+    .then(data => render(Object.keys(data), data, model))
+    .catch(error => {
+        document.body.innerHTML = `
+        <div class="error">
+            <h1 class="error-heading">Oops!</h1>
+            <h2 class="error-sub-heading">an error occurred: ${error.message}</h2>
+            <p class="error-message bold">Please try again 😭 </p>
+        </div>
+        `
+      })
     } else {
         urlArray.forEach(i => {
             fetch(i)
-        .then(res => res.json())
-        .then(data => {
-            render(Object.keys(data), data, model)
-           })
+            .then(response => {
+                if (!response.ok) {
+                  throw new Error(response.statusText);
+                }
+                return response.json();
+              })
+            .then(data => render(Object.keys(data), data, model))
+            .catch(error => {
+                document.body.innerHTML = `
+                <div class="error">
+                    <h1 class="error-heading">Oops!</h1>
+                    <h2 class="error-sub-heading">an error occurred: ${error.message}</h2>
+                    <p class="error-message bold">Please try again 😭 </p>
+                </div>
+                `
+              })
         })
     }
 }
