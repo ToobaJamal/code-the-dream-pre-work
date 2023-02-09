@@ -126,15 +126,15 @@ img {
     .card {
         width: 320px;
     }
-    .model, #next, #previous {
-        font-size: 1.1rem;
-        padding-block: 0.5em;
-        padding-inline: 1em;
-    }
 }
 @media (min-width: 650px) {
     p {
         font-size: 1.2rem;
+    }
+    .model, #next, #previous {
+        font-size: 1.1rem;
+        padding-block: 0.5em;
+        padding-inline: 1em;
     }
     #cards-parent {
         flex-direction: row;
