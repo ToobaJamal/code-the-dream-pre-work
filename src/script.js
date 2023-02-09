@@ -18,7 +18,7 @@ btns.addEventListener("click", function(e) {
         renderResults(data, searchTerm, page)
     })
     .catch(error => {
-        document.body.innerHTML = `
+        main.innerHTML = `
         <div class="error">
             <h1 class="error-heading">Oops!</h1>
             <h2 class="error-sub-heading">an error occurred: ${error.message}</h2>
@@ -257,7 +257,7 @@ function nextPage(searchTerm, page) {
       })
     .then(data => renderResults(data, searchTerm, page))
     .catch(error => {
-        document.body.innerHTML = `
+        main.innerHTML = `
         <div class="error">
             <h1 class="error-heading">Oops!</h1>
             <h2 class="error-sub-heading">an error occurred: ${error.message}</h2>
@@ -279,7 +279,7 @@ function prevPage(searchTerm, page) {
       })
     .then(data => renderResults(data, searchTerm, page))
     .catch(error => {
-        document.body.innerHTML = `
+        main.innerHTML = `
         <div class="error">
             <h1 class="error-heading">Oops!</h1>
             <h2 class="error-sub-heading">an error occurred: ${error.message}</h2>
@@ -304,7 +304,7 @@ function renderIndividualResult(url, model) {
       })
     .then(data => render(Object.keys(data), data, model))
     .catch(error => {
-        document.body.innerHTML = `
+        main.innerHTML = `
         <div class="error">
             <h1 class="error-heading">Oops!</h1>
             <h2 class="error-sub-heading">an error occurred: ${error.message}</h2>
@@ -323,7 +323,7 @@ function renderIndividualResult(url, model) {
               })
             .then(data => render(Object.keys(data), data, model))
             .catch(error => {
-                document.body.innerHTML = `
+                main.innerHTML = `
                 <div class="error">
                     <h1 class="error-heading">Oops!</h1>
                     <h2 class="error-sub-heading">an error occurred: ${error.message}</h2>
