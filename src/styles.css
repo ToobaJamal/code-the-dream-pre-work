@@ -44,9 +44,8 @@ img {
 }
 
 .individual-results-parent {
-    margin: auto;
-    width: 90%;
-    height: 100px;
+    margin-block: auto;
+    height: 100px; 
 }
 
 #btns-parent {
@@ -140,6 +139,7 @@ img {
     #cards-parent {
         flex-direction: row;
         flex-wrap: wrap;
+        align-items: normal;
         justify-content: center;
     }
     .card {
