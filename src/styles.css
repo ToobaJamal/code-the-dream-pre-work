@@ -29,6 +29,7 @@ p {
 
 img {
     height: 100px;
+    cursor: pointer;
 }
 
 #models-btns-parent, .individual-results-parent {
@@ -124,7 +125,7 @@ img {
 
 @media (min-width: 380px) {
     .card {
-        width: 320px;
+        width: 80%;
     }
 }
 @media (min-width: 650px) {
@@ -144,6 +145,7 @@ img {
     }
     .card {
         margin-inline: unset;
+        width: 320px;
     }
     .error-heading {
         font-size: 2.2rem;
