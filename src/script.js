@@ -10,7 +10,7 @@ const errorMessageHTML = `<div class="error">
 <p class="error-message bold">Please try again 😭 </p>
 </div>`
 
-// Add click event listener to btns
+// Event listener that calls API on btn click
 btns.addEventListener("click", function(e) {
     const searchTerm = e.target.textContent.trim().toLowerCase()
     fetch(`https://swapi.dev/api/${searchTerm}/?page=${page}`)
