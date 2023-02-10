@@ -3,6 +3,12 @@ const btnsParent = document.querySelector("#btns-parent")
 const main = document.querySelector("main")
 let searchTerm = ""
 let page = 1
+let errorMessage = ""
+const errorMessageHTML = `<div class="error">
+<h1 class="error-heading">Oops!</h1>
+<h2 class="error-sub-heading">an error occurred: ${errorMessage}</h2>
+<p class="error-message bold">Please try again 😭 </p>
+</div>`
 
 // Add click event listener to btns
 btns.addEventListener("click", function(e) {
@@ -18,13 +24,8 @@ btns.addEventListener("click", function(e) {
         renderResults(data, searchTerm, page)
     })
     .catch(error => {
-        main.innerHTML = `
-        <div class="error">
-            <h1 class="error-heading">Oops!</h1>
-            <h2 class="error-sub-heading">an error occurred: ${error.message}</h2>
-            <p class="error-message bold">Please try again 😭 </p>
-        </div>
-        `
+        errorMessage = error.message
+        main.innerHTML = errorMessageHTML
     })
 })
 
@@ -257,13 +258,8 @@ function nextPage(searchTerm, page) {
       })
     .then(data => renderResults(data, searchTerm, page))
     .catch(error => {
-        main.innerHTML = `
-        <div class="error">
-            <h1 class="error-heading">Oops!</h1>
-            <h2 class="error-sub-heading">an error occurred: ${error.message}</h2>
-            <p class="error-message bold">Please try again 😭 </p>
-        </div>
-        `
+        errorMessage = error.message
+        main.innerHTML = errorMessageHTML
       })
 }
 
@@ -279,13 +275,8 @@ function prevPage(searchTerm, page) {
       })
     .then(data => renderResults(data, searchTerm, page))
     .catch(error => {
-        main.innerHTML = `
-        <div class="error">
-            <h1 class="error-heading">Oops!</h1>
-            <h2 class="error-sub-heading">an error occurred: ${error.message}</h2>
-            <p class="error-message bold">Please try again 😭 </p>
-        </div>
-        `
+        errorMessage = error.message
+        main.innerHTML = errorMessageHTML
       })
 }
 
@@ -304,13 +295,8 @@ function renderIndividualResult(url, model) {
       })
     .then(data => render(Object.keys(data), data, model))
     .catch(error => {
-        main.innerHTML = `
-        <div class="error">
-            <h1 class="error-heading">Oops!</h1>
-            <h2 class="error-sub-heading">an error occurred: ${error.message}</h2>
-            <p class="error-message bold">Please try again 😭 </p>
-        </div>
-        `
+        errorMessage = error.message
+        main.innerHTML = errorMessageHTML
       })
     } else {
         urlArray.forEach(i => {
@@ -323,13 +309,8 @@ function renderIndividualResult(url, model) {
               })
             .then(data => render(Object.keys(data), data, model))
             .catch(error => {
-                main.innerHTML = `
-                <div class="error">
-                    <h1 class="error-heading">Oops!</h1>
-                    <h2 class="error-sub-heading">an error occurred: ${error.message}</h2>
-                    <p class="error-message bold">Please try again 😭 </p>
-                </div>
-                `
+                errorMessage = error.message
+                main.innerHTML = errorMessageHTML
               })
         })
     }
